@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+env_TableDocManager
 
 # Spyder project settings
 .spyderproject
