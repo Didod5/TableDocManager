@@ -88,6 +88,22 @@ class People(QScrollArea):
         self.layout.addWidget(QLabel('Фамилия И. О.'), 51, 0, alignment=Qt.AlignRight)
         self.layout.addWidget(QLabel('Реквизиты распорядительного документа,\nподтверждающего полномочия'), 52, 0, alignment=Qt.AlignRight)
 
+
+        self.label_11 = QLabel('\n\n\nАкты входного контроля')
+        self.layout.addWidget(self.label_11, 53, 1, 2, 3, alignment=Qt.AlignBottom)
+
+        self.layout.addWidget(QLabel('Член комиссии №1'), 55, 1, 1, 3, alignment=Qt.AlignBottom)
+        self.layout.addWidget(QLabel('Должность с указанием\nнаименования организации'), 56, 0, alignment=Qt.AlignRight)
+        self.layout.addWidget(QLabel('Фамилия И. О.'), 57, 0, alignment=Qt.AlignRight)
+
+        self.layout.addWidget(QLabel('Член комиссии №2'), 58, 1, 1, 3, alignment=Qt.AlignBottom)
+        self.layout.addWidget(QLabel('Должность с указанием\nнаименования организации'), 59, 0, alignment=Qt.AlignRight)
+        self.layout.addWidget(QLabel('Фамилия И. О.'), 60, 0, alignment=Qt.AlignRight)
+
+        self.layout.addWidget(QLabel('Член комиссии №3'), 61, 1, 1, 3, alignment=Qt.AlignBottom)
+        self.layout.addWidget(QLabel('Должность с указанием\nнаименования организации'), 62, 0, alignment=Qt.AlignRight)
+        self.layout.addWidget(QLabel('Фамилия И. О.'), 63, 0, alignment=Qt.AlignRight)
+
         # 2 column
         self.construction_supervisor_job = QLineEdit()
         self.construction_supervisor_name = QLineEdit()
@@ -164,8 +180,23 @@ class People(QScrollArea):
         self.other_entity_3_requisites = QLineEdit()
         self.layout.addWidget(self.other_entity_3_job, 50, 1)
         self.layout.addWidget(self.other_entity_3_name, 51,1)
-        self.layout.addWidget(self.other_entity_3_requisites, 52, 1)        
-        
+        self.layout.addWidget(self.other_entity_3_requisites, 52, 1)   
+
+        self.commission_member_1_job = QLineEdit()
+        self.commission_member_1_name = QLineEdit()
+        self.layout.addWidget(self.commission_member_1_job, 56, 1)
+        self.layout.addWidget(self.commission_member_1_name, 57, 1)
+
+        self.commission_member_2_job = QLineEdit()
+        self.commission_member_2_name = QLineEdit()
+        self.layout.addWidget(self.commission_member_2_job, 59, 1)
+        self.layout.addWidget(self.commission_member_2_name, 60, 1)
+
+        self.commission_member_3_job = QLineEdit()
+        self.commission_member_3_name = QLineEdit()
+        self.layout.addWidget(self.commission_member_3_job, 62, 1)
+        self.layout.addWidget(self.commission_member_3_name, 63, 1)
+
         # 3 column
         self.layout.addWidget(QLabel('Что получилось:'), 3, 2)
 
@@ -178,4 +209,5 @@ class People(QScrollArea):
         if alignment:
             self.layout.addWidget(widget, row, column, row_span, col_span, alignment)
         else:
-            self.layout.addWidget(widget, row, column, row_span, col_span)    
+            self.layout.addWidget(widget, row, column, row_span, col_span) 
+               
