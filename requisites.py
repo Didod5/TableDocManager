@@ -19,14 +19,14 @@ class RequisitesWidget(QScrollArea):
         # 0 - 2 rows
         self.general_info = QLabel()
         self.object_of_building_0_label = QLabel()
-        self.object_of_building_0 = QPlainTextEdit()
+        self.object_of_building = QPlainTextEdit()
         self.description_0 = QLabel()
 
         self.add_widget_to_grid(self.general_info, 0, 0, 1, 3,
                                 'Общая информация', alignment=Qt.AlignCenter)
         self.add_widget_to_grid(self.object_of_building_0_label, 1, 0, 1, 3, 
                                 text='Объект капитального строительства', alignment=Qt.AlignCenter)
-        self.add_widget_to_grid(self.object_of_building_0, 2, 1)
+        self.add_widget_to_grid(self.object_of_building, 2, 1)
         self.add_widget_to_grid(self.description_0, 2, 2, 
                                 text=
 '''Наименование проектной 
@@ -36,10 +36,10 @@ class RequisitesWidget(QScrollArea):
 
 
         # 3nd row
-        self.object_of_building_1 = QPlainTextEdit()
+        self.city_for_testing = QPlainTextEdit()
         self.description_1 = QLabel()
         
-        self.add_widget_to_grid(self.object_of_building_1, 3, 1)
+        self.add_widget_to_grid(self.city_for_testing, 3, 1)
         self.add_widget_to_grid(self.description_1, 3, 2,
                                 text='Город для актов гидростатического\nили манометрического испытания\n на герметичность',
                                 alignment=Qt.AlignCenter)
