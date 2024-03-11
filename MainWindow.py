@@ -3,12 +3,14 @@ from PyQt5.QtWidgets import (
     QMessageBox,
     QTabWidget,
     QWidget,
-    QVBoxLayout
+    QVBoxLayout,
+    QInputDialog
     )
 from MainMenu import MainMenu
 from PyQt5.QtCore import pyqtSlot
 from requisites import RequisitesWidget
 from people import People
+from db.db import create_db as cb
 
 
 class MainWindow(QMainWindow):
@@ -21,6 +23,9 @@ class MainWindow(QMainWindow):
 
         main_menu.about.triggered.connect(self.about)
         main_menu.about_qt.triggered.connect(self.about_qt)
+
+        main_menu.create_db.triggered.connect(self.create_db)
+
 
         central_field = QWidget(self)
         tab_widget = QTabWidget(central_field)
@@ -47,3 +52,15 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def about_qt(self):
         QMessageBox.aboutQt(self, 'Автоген')
+
+    @pyqtSlot()
+    def create_db(self):
+        try:
+            text = QInputDialog.getText(self, 'Ввод данных', 'Введите текст:')
+            print(text)
+            cb()
+            msg = QMessageBox()
+            msg.setText('Success')
+            msg.exec_()
+        except:
+            pass
