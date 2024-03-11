@@ -9,7 +9,7 @@ class People(QScrollArea):
         self.layout = QGridLayout()
         self.scroll_widget = QWidget()
         self.scroll_widget.setLayout(self.layout)
-        self.layout.setContentsMargins(400, 50, 400, 50)
+        self.layout.setContentsMargins(400, 75, 400, 100)
         self.layout.setSpacing(40)
 
 
