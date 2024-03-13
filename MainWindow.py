@@ -11,6 +11,7 @@ from PyQt5.QtCore import pyqtSlot
 from requisites import RequisitesWidget
 from people import People
 from db.db import create_db as cb
+import os
 
 
 class MainWindow(QMainWindow):
@@ -56,11 +57,22 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def create_db(self):
         try:
-            text = QInputDialog.getText(self, 'Ввод данных', 'Введите текст:')
-            print(text)
-            cb()
             msg = QMessageBox()
-            msg.setText('Success')
-            msg.exec_()
-        except:
-            pass
+            status = 1
+            while status:
+                bd_name, status = QInputDialog.getText(self, '', 'Enter the name:' , text='project')
+                if not bd_name:
+                    msg.setText('The name is too short')
+                    msg.exec_()
+                    continue
+                elif status:            
+                    if os.path.exists(f'db/{bd_name}.db'):
+                        msg.setText('File with this name already exists')
+                    else:
+                        cb(bd_name)
+                        msg.setText('Successfully created')
+                        status = 0
+                    msg.exec_()
+            
+        except Exception as ex:
+            print('MainWindow', ex)

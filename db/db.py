@@ -1,9 +1,9 @@
 import sqlite3
 
-def create_db():
-    try:
 
-        connection = sqlite3.connect(f'test.py')
+def create_db(bd_name):
+    try:
+        connection = sqlite3.connect(f'db/{bd_name}.db')
         cursor = connection.cursor()
 
         cursor.execute('''
@@ -62,10 +62,10 @@ def create_db():
         other_entity_3_name TEXT,
         other_entity_3_requisites TEXT         
         )''')
-
-        print('succesfully created')
-    except sqlite3.Error as e:
-        print(f"SQLite error: {e}")
-    finally:
+    
         connection.commit()
+    except sqlite3.Error as e:
+        output = f"SQLite error: {e}"
+        print(output)
+    finally:
         connection.close()
