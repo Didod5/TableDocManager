@@ -4,13 +4,14 @@ from PyQt5.QtWidgets import (
     QTabWidget,
     QWidget,
     QVBoxLayout,
-    QInputDialog
+    QInputDialog,
+    QFileDialog,
     )
 from MainMenu import MainMenu
 from PyQt5.QtCore import pyqtSlot
 from requisites import RequisitesWidget
 from people import People
-from db.db import create_db as cb
+from db.db import create_db as cb, connect_db as conn_db
 import os
 
 
@@ -26,6 +27,7 @@ class MainWindow(QMainWindow):
         main_menu.about_qt.triggered.connect(self.about_qt)
 
         main_menu.create_db.triggered.connect(self.create_db)
+        main_menu.connect_db.triggered.connect(self.connect_db)
 
 
         central_field = QWidget(self)
@@ -76,3 +78,11 @@ class MainWindow(QMainWindow):
             
         except Exception as ex:
             print('MainWindow', ex)
+
+    @pyqtSlot()
+    def connect_db(self):
+        file_dialog = QFileDialog.getOpenFileName(caption='Choose the file',
+                                    directory='db/', 
+                                    filter='DataBases(*.db)')
+        file_name = file_dialog[0]
+        conn_db(file_name)

@@ -69,3 +69,12 @@ def create_db(bd_name):
         print(output)
     finally:
         connection.close()
+
+def connect_db(file_name):
+    try:
+        connection = sqlite3.connect(file_name)
+        cursor = connection.cursor()
+        print('success')
+        connection.close()
+    except sqlite3.Error as e:
+        print(f"SQLite error: {e}")
