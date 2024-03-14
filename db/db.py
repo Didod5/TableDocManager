@@ -1,4 +1,6 @@
 import sqlite3
+from PyQt5.QtSql import QSqlDatabase
+import sys
 
 
 def create_db(bd_name):
@@ -71,10 +73,12 @@ def create_db(bd_name):
         connection.close()
 
 def connect_db(file_name):
-    try:
-        connection = sqlite3.connect(file_name)
-        cursor = connection.cursor()
-        print('success')
-        connection.close()
-    except sqlite3.Error as e:
-        print(f"SQLite error: {e}")
+    db = QSqlDatabase.addDatabase('QSQLITE')
+    db.setDatabaseName(file_name)
+    ok = db.open()
+    if ok:
+        with open('settings.py', 'w') as st:
+            st.write(f'bd_name = "{file_name}"')
+        print('connected to db', file=sys.stderr)
+    else:
+        print('connection failed', file=sys.stderr)

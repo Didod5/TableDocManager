@@ -204,6 +204,13 @@ alignment=Qt.AlignCenter)
 телефон/факс - для индивидуальных
 предпринимателей
 ''')
+    
+    def get_data(self):
+        data = [self.object_of_building, self.city_for_testing, self.name_of_developer, self.requisites_of_developer, self.entity_builder, self.requisites_of_entity, self.project_preparer, self.project_preparer, self.project_inspection, self.requisites_of_project_inspection, self.project_infrastructureOps, self.requisites_of_infrastructureOps]
+        data = [widget.toPlainText().strip() for widget in data]
+        return tuple(data)
+
+           
 
     def add_widget_to_grid(self, widget, row, column, row_span=1, col_span=1, text='', alignment=None):
         if text:

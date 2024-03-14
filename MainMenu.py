@@ -14,7 +14,8 @@ class MainMenu(QMenuBar):
         self.create_db = db_menu.addAction('Создание')
         self.connect_db = db_menu.addAction('Подключение')
         self.delete_db = db_menu.addAction('Удаление')
-    
+        self.save_data = db_menu.addAction('Save')
+
     @property
     def about(self):
         return self.__about
